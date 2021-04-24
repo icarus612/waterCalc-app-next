@@ -1,26 +1,35 @@
-import {useState, useEffect, useRef} from 'react'
-import cx from 'classnames'
-import Header from 'sections/header/basic.js'
+import React, {useState} from 'react';
+import Button from '../components/button.js';
 
-import layout from 'styles/layout.module.scss'
-import global from 'styles/global.module.scss'
-
-export default () => {
-  const [width, setWidth] = useState(0)
-  const animatedText = []
-  useEffect(()=> animatedText.map((i)=> i.classList.add(global.animate_in_end)))
-  useEffect(() => {
-    const w = () => setWidth(window.innerWidth)
-    w()
-    window.addEventListener('resize', w)
-    return () => window.removeEventListener('resize', w)
-	}, [width])
-	
-
-  return (
-    <div className={cx(layout.h100_vh, layout.w100_vw, layout.f_row, layout.justify_center, layout.align_center)}>
-      <Header />
-      <h1 className={global.text_complementary}>Devicarus</h1>
-    </div>
-  )
+  
+const FirstCard = (props) => {
+	return (
+		<section className="py-5d-flex flex-wrap overflow-hidden">
+			<div className='container first-card text-center flex-wrap flex-row d-flex justify-content-around align-items-center p-4'>
+				<h1 className="col-12 mb-4">
+					What Type of System do you have? 
+				</h1>
+				<div className="col-12 col-md-5 card pt-3" onClick={()=> props.onChange("R")}>
+					<h3>
+						Residential
+					</h3>
+					<p>
+						Click here for Residential rates.
+					</p>
+					<Button className="basic residential" value="Residential" />
+				</div>
+				<div className="col-12 col-md-5 card pt-3 mt-4 mt-md-0" onClick={()=> props.onChange("C")}>
+					<h3>
+						Commercial
+					</h3>
+					<p>
+						Click here for commercial rates.
+					</p>
+					<Button className="basic commercial" value="Commercial" />
+				</div>
+			</div>
+		</section>
+	);
 }
+
+export default FirstCard
