@@ -1,36 +1,42 @@
 import Link from 'next/link';
-import Button from 'components/button.js';
+import Button from 'components/button';
+import cx from 'classnames';
+import Header from 'sections/header';
+
+import layout from 'styles/layout.module.scss'
+import global from 'styles/global.module.scss'
 
 export default (props) => {
 	return (
-		<section className="py-5d-flex flex-wrap overflow-hidden">
-			<div className='container first-card text-center flex-wrap flex-row d-flex justify-content-around align-items-center p-4'>
-				<h1 className="col-12 mb-4">
-					What Type of System do you have? 
+		<div className={cx(layout.f_col, layout.f_wrap, layout.h100_vh, layout.w100_vw)}>
+			<Header />
+			<div className={cx(global.first_card, layout.container, layout.f_col_mob, layout.f_row, layout.f_wrap, layout.justify_around, layout.align_stretch)}>
+				<h1 className={cx(layout.block_12, layout.text_center)}>
+					What Type of System do you have?
 				</h1>
 				<Link href="/residential">
-						<div className="col-12 col-md-5 card pt-3">
+				<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center, layout.justify_start)}>
 						<h3>
 							Residential
 						</h3>
 						<p>
 							Click here for Residential rates.
 						</p>
-						<Button className="basic residential" value="Residential" />
+						<Button className={global.basic} value="Residential" />
 					</div>
 				</Link>
 				<Link href="/commercial">
-					<div className="col-12 col-md-5 card pt-3 mt-4 mt-md-0">
+				<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center)}>
 						<h3>
 							Commercial
 						</h3>
 						<p>
 							Click here for commercial rates.
 						</p>
-						<Button className="basic commercial" value="Commercial" />
+						<Button className={global.basic} value="Commercial" />
 					</div>
 				</Link>
 			</div>
-		</section>
+		</div>
 	);
 }

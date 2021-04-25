@@ -1,7 +1,12 @@
-import {useState, useEffect} from 'react';
-import Input from 'components/input.js';
-import Button from 'components/button.js';
-import 	PriceBox from 'components/price-box.js';
+import { useState, useEffect } from 'react';
+import Input from 'components/input';
+import Button from 'components/button';
+import PriceBox from 'components/price-box';
+import cx from 'classnames';
+import Header from 'sections/header';
+
+import layout from 'styles/layout.module.scss'
+import global from 'styles/global.module.scss'
 
 const ResidentialRates = (props) => {
 	const [water, setWater] = useState(0);
@@ -19,7 +24,7 @@ const ResidentialRates = (props) => {
 		let s = 5.19 * (e > 16 ? 16 : e);
 		let x = 0;
 		for (let i = 0; i < (Number(e) + Number(withoutSewer)); i++) {
-			x += i < 16 ? rates[Math.floor(i/4)] : rates[4];
+			x += i < 16 ? rates[Math.floor(i / 4)] : rates[4];
 		}
 		setWithSewer(e);
 		setWater(x);
@@ -29,7 +34,7 @@ const ResidentialRates = (props) => {
 	const handleWithoutSewer = (e) => {
 		let x = 0;
 		for (let i = 0; i < (Number(e) + Number(withSewer)); i++) {
-			x += i < 16 ? rates[Math.floor(i/4)] : rates[4];
+			x += i < 16 ? rates[Math.floor(i / 4)] : rates[4];
 		}
 		setWithoutSewer(e);
 		setWater(x);
@@ -52,80 +57,80 @@ const ResidentialRates = (props) => {
 	}
 
 	const meter = {
-        "0.75": [1.29, 8.7],
-        "1": [3.22, 21.76]
+		"0.75": [1.29, 8.7],
+		"1": [3.22, 21.76]
 	};
-	
-	useEffect(()=> {
+
+	useEffect(() => {
 		const availability = water > 0 &&
 			(sewer > 0 ? meter[meterSize][0] + meter[meterSize][1] : meter[meterSize][0])
-		console.log(water, sewer, irrigation, stormWater, availability)
 		setSubtotal(water + sewer + irrigation + stormWater + availability);
 	}, [water, sewer, irrigation, stormWater, meterSize])
 	return (
 		<>
-			<div className="d-flex flex-column flex-wrap flex-md-row justify-content-start align-items-around">
-				<h3 className="m-4">
-				Residential Rates
-				</h3>
-				<div className="col-12 d-flex flex-column justify-content-start align-items-start">
-					<div className="col-6">
-                        <Button 
-                            type="select" 
-                            className="select" 
-                            value={meterSize} 
-                            options={[0.75, 1]} 
-                            onChange={(e)=> setMeterSize(e)} 
-                        /> 
-                            <span className="pl-2">Meter Size</span>
-                    </div>
-					<div className="col-6">
-                        <Button 
-                            type="select" 
-                            className="select" 
-                            options={["None", "Tier 1", "Tier 2", "Tier 3", "Tier 4"]} 
-                            onChange={(e)=> setStormWater(stormWaterPrice[e])} 
-                        /> 
-                            <span className="pl-2">Storm Water Runnoff</span>
-                    </div>
-					<Input 
-						label="With Sewer" 
-						type="number" 
-						className="col-6" 
-						placeholder={0} 
-						min={0} 
-						max={10000} 
-						onChange={(e)=> handleWithSewer(e.target.value)} 
+			<div className={cx(layout.f_col, layout.f_wrap, layout.h100_vh, layout.w100_vw)}>
+				<Header />
+				<div className={cx(layout.block_12, layout.f_col, layout.justify_start, layout.align_start)}>
+					<h3>
+						Residential Rates
+					</h3>
+					<div className={layout.block_6}>
+						<Button
+							type="select"
+							className="select"
+							value={meterSize}
+							options={[0.75, 1]}
+							onChange={(e) => setMeterSize(e)}
+						/>
+						<span>Meter Size</span>
+					</div>
+					<div className={layout.block_6}>
+						<Button
+							type="select"
+							className="select"
+							options={["None", "Tier 1", "Tier 2", "Tier 3", "Tier 4"]}
+							onChange={(e) => setStormWater(stormWaterPrice[e])}
+						/>
+						<span>Storm Water Runnoff</span>
+					</div>
+					<Input
+						label="With Sewer"
+						type="number"
+						className={layout.block_6}
+						placeholder={0}
+						min={0}
+						max={10000}
+						onChange={(e) => handleWithSewer(e.target.value)}
 					/>
-					<Input 
-						label="Without Sewer" 
-						type="number" 
-						className="col-6" 
-						placeholder={0} 
-						min={0} 
-						max={10000} 
-						onChange={(e)=> handleWithoutSewer(e.target.value)} 
+					<Input
+						label="Without Sewer"
+						type="number"
+						className={layout.block_6}
+						placeholder={0}
+						min={0}
+						max={10000}
+						onChange={(e) => handleWithoutSewer(e.target.value)}
 					/>
-					<Input 
-						label="Irrigation" 
-						type="number" 
-						className="col-6" 
-						placeholder={0} 
-						min={0} 
-						max={10000} 
-						onChange={(e)=> handleIrrigation(e.target.value)} 
+					<Input
+						label="Irrigation"
+						type="number"
+						className={layout.block_6}
+						placeholder={0}
+						min={0}
+						max={10000}
+						onChange={(e) => handleIrrigation(e.target.value)}
 					/>
 				</div>
 			</div>
-			<PriceBox 
-				sewerUsage={sewer > 0 && sewer} 
-				waterUsage={water > 0 &&  water} 
-				sewerFee={sewer > 0} 
-                waterFee={water > 0} 
-				meter={meter[meterSize]} 
-				irrigationUsage={irrigation > 0 && irrigation} 
+			<PriceBox
+				sewerUsage={sewer > 0 && sewer}
+				waterUsage={water > 0 && water}
+				sewerFee={sewer > 0}
+				waterFee={water > 0}
+				meter={meter[meterSize]}
+				irrigationUsage={irrigation > 0 && irrigation}
 				stormWater={stormWater > 0 && stormWater}
-				subtotal={subtotal} 
+				subtotal={subtotal}
 			/>
 		</>
 	)

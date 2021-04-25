@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import '../application.css';
+import cx from 'classnames';
+import Header from 'sections/header';
+
+import layout from 'styles/layout.module.scss'
+import global from 'styles/global.module.scss'
 
   
 const Home = () => {
@@ -8,14 +12,15 @@ const Home = () => {
 		window.addEventListener('resize', ()=> setWidth(window.innerWidth))
 	})
 	return (
-		<div className="container">
-			<div className='flex-wrap flex-row d-flex justify-content-around align-items-stretch card mt-5 p-3'>
-				<div className="col-12 col-md-10 text-center p-3">
+		<>
+			<Header />
+			<div className={cx(layout.container, layout.f_col_mob, layout.f_row, layout.f_wrap, layout.justify_center, layout.align_stretch, global.card)}>
+				<div className={cx(layout.block_10, layout.block_12_mob, layout.text_center)}>
 					<h1>Water Utility Calculator App</h1>
 					<h4>A basic breakdown of how your bill is calculated. For more information visit <a target="_blank" href="https://charlottenc.gov/Water/RatesBilling/Pages/CLTWRates.aspx">Charlotte Water</a>.</h4>				
 				</div>
-				<div className="flex-wrap flex-row d-flex justify-content-around align-items-stretch p-3">
-					<h3 className="col-12 col-md-10 text-center">
+				<div className={cx(layout.f_row, layout.justify_around, layout.align_stretch)}>
+					<h3 className={cx(layout.block_10, layout.block_12_mob, layout.text_center)}>
 						Universal Rates &amp; Fees
 					</h3>
 					<div>
@@ -98,7 +103,7 @@ const Home = () => {
 					</ul>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

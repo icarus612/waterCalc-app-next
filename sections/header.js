@@ -2,7 +2,7 @@ import React from 'react';
 import cx from "classnames"
 import Image from 'components/image'
 
-import local from 'styles/sections/header/basic.module.scss'
+import local from 'styles/sections/header.module.scss'
 import layout from 'styles/layout.module.scss'
 
 import Link from "next/link"
@@ -12,11 +12,11 @@ export default ()=> {
         <nav className={cx(local.nav_bar, layout.f_row, layout.justify_end, layout.align_center)}>
 
           <div className={cx(layout.f_row, layout.justify_center, layout.align_center)}>
-            <Link href="https://devicarus.com/projects">projects</Link>
+            <Link href="/residential">residential</Link>
 						<div className={local.divider}>|</div>
-            <Link href="https://resume.devicarus.com">resume</Link>
+            <Link href="/commercial">commercial</Link>
 						<div className={local.divider}>|</div>
-						<Link href="https://github.com/icarus612">github</Link>
+						<Link href="/info">info</Link>
             <div className={local.divider}>|</div>
           </div>
           <Link href="https://devicarus.com">
