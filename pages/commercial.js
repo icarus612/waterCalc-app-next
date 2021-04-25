@@ -1,14 +1,15 @@
-import React from 'react';
-import Input from '../components/input.js';
-import Button from '../components/button.js';
-import 	PriceBox from '../sections/priceBox.js';
+import {useEffect, useState} from 'react';
+import Input from 'components/input.js';
+import Button from 'components/button.js';
+import 	PriceBox from 'components/price-box.js';
 
-const CommercialRates = (props) => {
-	const [meterSize, setMeterSize] = React.useState(.75);
-	const [usage, setUsage] = React.useState(0);
-    const [subtotal, setSubtotal] = React.useState(0);
-    const [irrigation, setIrrigation] = React.useState(0);
-    const [sewer, setSewer] = React.useState(false);
+
+export default (props) => {
+	const [meterSize, setMeterSize] = useState(.75);
+	const [usage, setUsage] = useState(0);
+    const [subtotal, setSubtotal] = useState(0);
+    const [irrigation, setIrrigation] = useState(0);
+    const [sewer, setSewer] = useState(false);
     const meter = {
         "0.75": [1.29, 8.7],
         "1": [3.22, 21.76],
@@ -38,7 +39,7 @@ const CommercialRates = (props) => {
         setMeterSize(ms);
     }
     
-    React.useEffect(()=> {
+    useEffect(()=> {
         const newSewer = sewer ? 8.01 : 2.92;
         const h = handleIrrigation(irrigation);
         const availability = usage > 0 &&
@@ -52,7 +53,7 @@ const CommercialRates = (props) => {
     }, [meterSize, usage, irrigation, sewer])
 
 	return (
-		<React.Fragment>
+		<>
             <div className="d-flex flex-column flex-wrap flex-md-row justify-content-start align-items-around">
                 <h3 className="m-4">
                     Commercial Rates
@@ -98,7 +99,6 @@ const CommercialRates = (props) => {
                 sewerUsage={(sewer && usage > 0) && (usage * 5.19)} 
                 subtotal={subtotal > 0 ? subtotal : 0} 
             />
-		</React.Fragment>
+		</>
 	)
 }
-export default CommercialRates;

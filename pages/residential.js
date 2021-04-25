@@ -1,17 +1,17 @@
-import React from 'react';
-import Input from '../components/input.js';
-import Button from '../components/button.js';
-import 	PriceBox from '../sections/priceBox.js';
+import {useState, useEffect} from 'react';
+import Input from 'components/input.js';
+import Button from 'components/button.js';
+import 	PriceBox from 'components/price-box.js';
 
 const ResidentialRates = (props) => {
-	const [water, setWater] = React.useState(0);
-	const [sewer, setSewer] = React.useState(0);
-	const [withSewer, setWithSewer] = React.useState(0);
-	const [withoutSewer, setWithoutSewer] = React.useState(0);
-	const [irrigation, setIrrigation] = React.useState(0);
-	const [stormWater, setStormWater] = React.useState(0);
-	const [subtotal, setSubtotal] = React.useState(0);
-	const [meterSize, setMeterSize] = React.useState(.75);
+	const [water, setWater] = useState(0);
+	const [sewer, setSewer] = useState(0);
+	const [withSewer, setWithSewer] = useState(0);
+	const [withoutSewer, setWithoutSewer] = useState(0);
+	const [irrigation, setIrrigation] = useState(0);
+	const [stormWater, setStormWater] = useState(0);
+	const [subtotal, setSubtotal] = useState(0);
+	const [meterSize, setMeterSize] = useState(.75);
 
 	const rates = [1.69, 2.18, 5.04, 5.04, 9.55];
 
@@ -56,14 +56,14 @@ const ResidentialRates = (props) => {
         "1": [3.22, 21.76]
 	};
 	
-	React.useEffect(()=> {
+	useEffect(()=> {
 		const availability = water > 0 &&
 			(sewer > 0 ? meter[meterSize][0] + meter[meterSize][1] : meter[meterSize][0])
 		console.log(water, sewer, irrigation, stormWater, availability)
 		setSubtotal(water + sewer + irrigation + stormWater + availability);
 	}, [water, sewer, irrigation, stormWater, meterSize])
 	return (
-		<React.Fragment>
+		<>
 			<div className="d-flex flex-column flex-wrap flex-md-row justify-content-start align-items-around">
 				<h3 className="m-4">
 				Residential Rates
@@ -127,7 +127,7 @@ const ResidentialRates = (props) => {
 				stormWater={stormWater > 0 && stormWater}
 				subtotal={subtotal} 
 			/>
-		</React.Fragment>
+		</>
 	)
 }
 export default ResidentialRates;

@@ -85,3 +85,50 @@
     transform: translate(0);
   }
 }
+
+.dark {
+  color: rgba(55, 55, 55, 1) !important;
+}
+
+.card {
+  border: none;
+  box-shadow: 2px 1px 10px -1px rgba(50,50,50,.5);
+  border-radius: 6px;
+  overflow: visible;
+  transition: .1s;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.first_card .card:hover {
+  cursor: pointer;
+}
+
+.first_card .card .basic {
+  margin-bottom: -18px;
+}
+
+.card input, .card select {
+  max-width: 100px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  margin: 5px 0px;
+}
+
+.card .basic {
+  background-color: #0077be;
+  color: #f1f1f1;
+}
+
+.back_btn {
+  width: fit-content;
+  color: #0077be;
+}
+
+.middle_line {
+  width: 1px;
+  height: 100%;
+  position: relative;
+  background-color: #CCC;
+}
