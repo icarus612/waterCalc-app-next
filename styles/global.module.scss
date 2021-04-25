@@ -1,7 +1,9 @@
 @import 'styles/theme';
 
-.card {
-  box-shadow: 0 0 -1px 20px rgba(50, 50, 50, .5);
+.info_card {
+  box-shadow: 0 0 20px -1px rgba(50, 50, 50, .5);
+  margin-top: 80px;
+  border-radius: 6px;
 }
 
 .thin {

@@ -68,9 +68,9 @@ const ResidentialRates = (props) => {
 	}, [water, sewer, irrigation, stormWater, meterSize])
 	return (
 		<>
-			<div className={cx(layout.f_col, layout.f_wrap, layout.h100_vh, layout.w100_vw)}>
+			<div className={cx(layout.f_row, layout.h100_vh, layout.w100_vw)}>
 				<Header />
-				<div className={cx(layout.block_12, layout.f_col, layout.justify_start, layout.align_start)}>
+				<div className={cx(layout.block_12, layout.f_col, layout.justify_start, layout.container, layout.align_start)}>
 					<h3>
 						Residential Rates
 					</h3>

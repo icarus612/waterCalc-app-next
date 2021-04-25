@@ -6,32 +6,28 @@ import layout from 'styles/layout.module.scss'
 import global from 'styles/global.module.scss'
 
   
-const Home = () => {
-	const [width, setWidth] = useState(window.innerWidth)
-	useEffect(()=> {
-		window.addEventListener('resize', ()=> setWidth(window.innerWidth))
-	})
+export default () => {
+
 	return (
 		<>
 			<Header />
-			<div className={cx(layout.container, layout.f_col_mob, layout.f_row, layout.f_wrap, layout.justify_center, layout.align_stretch, global.card)}>
+			<div className={cx(layout.container, layout.f_col_mob, layout.f_row, layout.f_wrap, layout.justify_center, layout.align_stretch, global.info_card)}>
 				<div className={cx(layout.block_10, layout.block_12_mob, layout.text_center)}>
 					<h1>Water Utility Calculator App</h1>
 					<h4>A basic breakdown of how your bill is calculated. For more information visit <a target="_blank" href="https://charlottenc.gov/Water/RatesBilling/Pages/CLTWRates.aspx">Charlotte Water</a>.</h4>				
 				</div>
-				<div className={cx(layout.f_row, layout.justify_around, layout.align_stretch)}>
+				<div className={cx(layout.f_row, layout.f_wrap, layout.justify_around, layout.align_stretch, layout.block_12)}>
 					<h3 className={cx(layout.block_10, layout.block_12_mob, layout.text_center)}>
 						Universal Rates &amp; Fees
 					</h3>
-					<div>
+					<div className={cx(layout.block_6, layout.block_12_mob)}>
 						<h4>Irrigation Meter Rates</h4>
 						<ul>
 							<li>Tier 1: (1-16 Ccf): $5.04</li>
 							<li>Tier 2: (17+ CCf): $9.55</li>
 						</ul>
 					</div>
-					<div>
-
+					<div className={cx(layout.block_6, layout.block_12_mob)}>
 						<h4>Fixed Fees</h4>
 						<ul>
 							<li>Water: $4.22/month</li>
@@ -40,7 +36,7 @@ const Home = () => {
 					</div>
 				</div>
 
-				<div>
+				<div className={cx(layout.block_12_mob, layout.block_6)}>
 					<h3>
 						Residential Rates &amp; Fees
 					</h3>
@@ -65,7 +61,7 @@ const Home = () => {
 					</ul>
 				</div>
 
-				<div>
+				<div className={cx(layout.block_12_mob, layout.block_6)}>
 					<h3>
 						Commercial Rates &amp; Fees
 					</h3>
@@ -107,4 +103,3 @@ const Home = () => {
 	);
 }
 
-export default Home;
