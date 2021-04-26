@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import cx from 'classnames';
 import Header from 'sections/header';
 

@@ -15,7 +15,7 @@ export default (props) => {
 					What Type of System do you have?
 				</h1>
 				<Link href="/residential">
-				<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center, layout.justify_start)}>
+					<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center, layout.justify_start)}>
 						<h3>
 							Residential
 						</h3>
@@ -26,7 +26,7 @@ export default (props) => {
 					</div>
 				</Link>
 				<Link href="/commercial">
-				<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center)}>
+					<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center)}>
 						<h3>
 							Commercial
 						</h3>

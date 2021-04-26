@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import cx from 'classnames';
+
 import Input from 'components/input';
 import Button from 'components/button';
 import PriceBox from 'components/price-box';
-import cx from 'classnames';
 import Header from 'sections/header';
 
 import layout from 'styles/layout.module.scss'
 import global from 'styles/global.module.scss'
 
-const ResidentialRates = (props) => {
+export default (props) => {
 	const [water, setWater] = useState(0);
 	const [sewer, setSewer] = useState(0);
 	const [withSewer, setWithSewer] = useState(0);
@@ -67,10 +69,13 @@ const ResidentialRates = (props) => {
 		setSubtotal(water + sewer + irrigation + stormWater + availability);
 	}, [water, sewer, irrigation, stormWater, meterSize])
 	return (
-		<>
-			<div className={cx(layout.f_row, layout.h100_vh, layout.w100_vw)}>
-				<Header />
-				<div className={cx(layout.block_12, layout.f_col, layout.justify_start, layout.container, layout.align_start)}>
+		<div className={cx(layout.f_row, layout.justify_center, layout.align_center, layout.f_wrap, layout.h100_vh, layout.w100_vw)}>
+			<Header />
+			<div className={cx(layout.block_12_mob, layout.block_8, global.info_card)}>
+				<Link href="/">
+					<span className={global.back_btn}>back</span>
+				</Link>
+				<div className={cx(global.card_content, layout.f_col, layout.justify_start, layout.align_start)}>
 					<h3>
 						Residential Rates
 					</h3>
@@ -120,19 +125,18 @@ const ResidentialRates = (props) => {
 						max={10000}
 						onChange={(e) => handleIrrigation(e.target.value)}
 					/>
+					<PriceBox
+						sewerUsage={sewer > 0 && sewer}
+						waterUsage={water > 0 && water}
+						sewerFee={sewer > 0}
+						waterFee={water > 0}
+						meter={meter[meterSize]}
+						irrigationUsage={irrigation > 0 && irrigation}
+						stormWater={stormWater > 0 && stormWater}
+						subtotal={subtotal}
+						/>
 				</div>
 			</div>
-			<PriceBox
-				sewerUsage={sewer > 0 && sewer}
-				waterUsage={water > 0 && water}
-				sewerFee={sewer > 0}
-				waterFee={water > 0}
-				meter={meter[meterSize]}
-				irrigationUsage={irrigation > 0 && irrigation}
-				stormWater={stormWater > 0 && stormWater}
-				subtotal={subtotal}
-			/>
-		</>
+		</div>
 	)
 }
-export default ResidentialRates;
