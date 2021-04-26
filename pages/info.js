@@ -15,18 +15,18 @@ export default () => {
 					<h1>Water Utility Calculator App</h1>
 					<h4>A basic breakdown of how your bill is calculated. For more information visit <a target="_blank" href="https://charlottenc.gov/Water/RatesBilling/Pages/CLTWRates.aspx">Charlotte Water</a>.</h4>				
 				</div>
-				<div className={cx(layout.f_row, layout.f_wrap, layout.justify_around, layout.align_stretch, layout.block_12)}>
+				<div className={cx(layout.f_row, layout.f_wrap, layout.justify_center, layout.align_stretch, layout.block_12)}>
 					<h3 className={cx(layout.block_10, layout.block_12_mob, layout.text_center)}>
 						Universal Rates &amp; Fees
 					</h3>
-					<div className={cx(layout.block_6, layout.block_12_mob)}>
+					<div className={cx(layout.block_5, layout.block_12_mob)}>
 						<h4>Irrigation Meter Rates</h4>
 						<ul>
 							<li>Tier 1: (1-16 Ccf): $5.04</li>
 							<li>Tier 2: (17+ CCf): $9.55</li>
 						</ul>
 					</div>
-					<div className={cx(layout.block_6, layout.block_12_mob)}>
+					<div className={cx(layout.block_5, layout.block_12_mob)}>
 						<h4>Fixed Fees</h4>
 						<ul>
 							<li>Water: $4.22/month</li>
@@ -35,7 +35,7 @@ export default () => {
 					</div>
 				</div>
 
-				<div className={cx(layout.block_12_mob, layout.block_6)}>
+				<div className={cx(layout.block_12_mob, layout.block_5)}>
 					<h3>
 						Residential Rates &amp; Fees
 					</h3>
@@ -60,7 +60,7 @@ export default () => {
 					</ul>
 				</div>
 
-				<div className={cx(layout.block_12_mob, layout.block_6)}>
+				<div className={cx(layout.block_12_mob, layout.block_5)}>
 					<h3>
 						Commercial Rates &amp; Fees
 					</h3>
