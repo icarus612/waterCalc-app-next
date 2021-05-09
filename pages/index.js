@@ -14,8 +14,9 @@ export default (props) => {
 				<h1 className={cx(layout.block_12, layout.text_center)}>
 					What Type of System do you have?
 				</h1>
+				<div className={cx( layout.block_12_mob, layout.block_5)}>
 				<Link href="/residential">
-					<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center, layout.justify_start)}>
+					<div className={cx(layout.f_col, global.card, layout.align_center, layout.justify_start)}>
 						<h3>
 							Residential
 						</h3>
@@ -25,8 +26,12 @@ export default (props) => {
 						<Button className={global.basic} value="Residential" />
 					</div>
 				</Link>
+					
+				</div>
+				<div className={cx( layout.block_12_mob, layout.block_5)}>
+					
 				<Link href="/commercial">
-					<div className={cx(layout.f_col, layout.block_12_mob, layout.block_5, global.card, layout.align_center)}>
+					<div className={cx(layout.f_col, global.card, layout.align_center)}>
 						<h3>
 							Commercial
 						</h3>
@@ -36,6 +41,7 @@ export default (props) => {
 						<Button className={global.basic} value="Commercial" />
 					</div>
 				</Link>
+				</div>
 			</div>
 		</div>
 	);
